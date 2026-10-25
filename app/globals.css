@@ -353,18 +353,43 @@ img {
   padding: 120px 0 136px;
   overflow: hidden;
 }
-.hero::before {
+/* Gold grid, centred so the filled cells below line up with it. */
+.hero::before,
+.cta-band::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--gold) 28%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--gold) 28%, transparent) 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.45;
-  mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 10%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 10%, transparent 75%);
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 60% 75% at 50% 40%, #000 15%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 40%, #000 15%, transparent 75%);
   pointer-events: none;
+}
+
+/* A few filled cells, like the square in the logo. Positions are in grid cells from the centre line. */
+.hero-squares {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 85% at 50% 40%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 85% at 50% 40%, #000 30%, transparent 85%);
+}
+.hero-squares span {
+  position: absolute;
+  left: calc(50% + var(--x) * 48px + 1px);
+  top: calc(var(--y) * 48px + 1px);
+  width: 47px;
+  height: 47px;
+  background: var(--gold);
+  opacity: var(--o, 0.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-squares span {
+    opacity: calc(var(--o, 0.18) * 1.8);
+  }
 }
 
 .hero-inner {
@@ -399,6 +424,23 @@ img {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 8px;
+}
+
+/* Gold square bullets. */
+.ticks li,
+.cta-list li {
+  position: relative;
+  padding-left: 18px;
+}
+.ticks li::before,
+.cta-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
 }
 
 .text-link {
@@ -631,12 +673,19 @@ img {
 /* CTA band: fixed colours so it reads the same in light and dark. */
 
 .cta-band {
+  position: relative;
+  overflow: hidden;
   padding: 104px 0;
   background: #13243d;
   color: #fff;
 }
-
+.cta-band::before {
+  opacity: 0.6;
+  mask-image: radial-gradient(ellipse 50% 80% at 15% 30%, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 80% at 15% 30%, #000 10%, transparent 70%);
+}
 .cta-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
@@ -777,6 +826,9 @@ img {
   .proof {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 32px;
+  }
+  .hero-squares {
+    display: none;
   }
   .faq-grid .section-head {
     position: static;
