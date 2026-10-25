@@ -84,8 +84,8 @@ img {
 .display {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(32px, 11vw, 72px);
-  line-height: 1.02;
+  font-size: var(--cell);
+  line-height: 1;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -348,12 +348,15 @@ img {
 
 /* ---------- Hero ---------- */
 
+/* The grid cell is the headline's line height, and the hero's top padding is a whole number
+   of cells, so each line of the headline sits exactly in one row of the grid. */
 .hero {
+  --cell: clamp(32px, 11vw, 72px);
   position: relative;
-  padding: 120px 0 136px;
+  padding: calc(var(--cell) * 2) 0 calc(var(--cell) * 2);
   overflow: hidden;
 }
-/* Gold grid, centred so the filled cells below line up with it. */
+/* Gold grid. Centred horizontally, so the headline's centre line runs through the middle of a cell. */
 .hero::before,
 .cta-band::before {
   content: "";
@@ -362,14 +365,14 @@ img {
   background-image:
     linear-gradient(color-mix(in srgb, var(--gold) 28%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--gold) 28%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-size: var(--cell) var(--cell);
   background-position: center top;
   mask-image: radial-gradient(ellipse 60% 75% at 50% 40%, #000 15%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 60% 75% at 50% 40%, #000 15%, transparent 75%);
   pointer-events: none;
 }
 
-/* A few filled cells, like the square in the logo. Positions are in grid cells from the centre line. */
+/* Filled cells that fade in and out (see components/HeroSquares.tsx). */
 .hero-squares {
   position: absolute;
   inset: 0;
@@ -379,15 +382,15 @@ img {
 }
 .hero-squares span {
   position: absolute;
-  left: calc(50% + var(--x) * 48px + 1px);
-  top: calc(var(--y) * 48px + 1px);
-  width: 47px;
-  height: 47px;
   background: var(--gold);
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+.hero-squares span.is-on {
   opacity: var(--o, 0.18);
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero-squares span {
+  :root:not([data-theme="light"]) .hero-squares span.is-on {
     opacity: calc(var(--o, 0.18) * 1.8);
   }
 }
@@ -673,6 +676,7 @@ img {
 /* CTA band: fixed colours so it reads the same in light and dark. */
 
 .cta-band {
+  --cell: 48px;
   position: relative;
   overflow: hidden;
   padding: 104px 0;
@@ -812,9 +816,6 @@ img {
 }
 
 @media (max-width: 900px) {
-  .hero {
-    padding: 72px 0 88px;
-  }
   .faq-grid,
   .cta-grid {
     grid-template-columns: 1fr;
@@ -826,9 +827,6 @@ img {
   .proof {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 32px;
-  }
-  .hero-squares {
-    display: none;
   }
   .faq-grid .section-head {
     position: static;

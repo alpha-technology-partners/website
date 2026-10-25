@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
+import { HeroSquares } from "@/components/HeroSquares";
 import { nav, site } from "@/lib/site";
 
 const pains = [
@@ -131,16 +132,7 @@ export default function Home() {
       <main id="main">
         {/* Hero */}
         <section className="hero" id="top">
-          <div className="hero-squares" aria-hidden>
-              <span style={{ "--x": -13, "--y": 3, "--o": 0.22 } as React.CSSProperties} />
-              <span style={{ "--x": -11, "--y": 8, "--o": 0.14 } as React.CSSProperties} />
-              <span style={{ "--x": -14, "--y": 10, "--o": 0.1 } as React.CSSProperties} />
-              <span style={{ "--x": 11, "--y": 2, "--o": 0.2 } as React.CSSProperties} />
-              <span style={{ "--x": 13, "--y": 6, "--o": 0.12 } as React.CSSProperties} />
-              <span style={{ "--x": 10, "--y": 10, "--o": 0.16 } as React.CSSProperties} />
-              <span style={{ "--x": -9, "--y": 1, "--o": 0.1 } as React.CSSProperties} />
-              <span style={{ "--x": 12, "--y": 12, "--o": 0.08 } as React.CSSProperties} />
-          </div>
+          <HeroSquares />
           <div className="container hero-inner">
             <h1 className="display">
               <span className="nowrap">Custom software<Dot /></span>
