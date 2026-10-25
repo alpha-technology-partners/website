@@ -9,7 +9,7 @@ export function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
-        <a href="#top" aria-label="Alphas Consulting Group, home" onClick={() => setOpen(false)}>
+        <a href="#top" aria-label="Alpha Technology Partners, home" onClick={() => setOpen(false)}>
           <Logo />
         </a>
         <nav className={`nav ${open ? "is-open" : ""}`} aria-label="Primary">

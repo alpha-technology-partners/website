@@ -282,7 +282,7 @@ export default function Home() {
                   <tr>
                     <th scope="col"><span className="sr-only">Comparison</span></th>
                     <th scope="col">Off-the-shelf SaaS</th>
-                    <th scope="col" className="col-us">Custom, built with ACG</th>
+                    <th scope="col" className="col-us">Custom, built with ATP</th>
                   </tr>
                 </thead>
                 <tbody>

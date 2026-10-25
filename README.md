@@ -1,8 +1,8 @@
-# Alphas Consulting Group website
+# Alpha Technology Partners website
 
-Marketing site for ACG: software modernization, replacing legacy SaaS, and custom builds for small and mid-sized businesses.
+Marketing site for Alpha Technology Partners (ATP): software modernization, replacing legacy SaaS, and custom builds for small and mid-sized businesses.
 
-Next.js (App Router) + TypeScript, plain CSS on top of the ACG brand kit tokens.
+Next.js (App Router) + TypeScript, plain CSS on top of the brand kit tokens.
 
 ```bash
 npm install
@@ -15,7 +15,7 @@ npm run build   # production build (fully static)
 - `app/page.tsx`: all page copy (hero, problems, services, process, comparison, FAQ, contact).
 - `app/globals.css`: layout and components.
 - `app/brand/`: `tokens.css` and fonts copied from the brand kit. Edit `tokens.json` in the kit and regenerate rather than changing values here.
-- `public/brand/`: logo SVGs. `app/icon.svg` is the favicon (the `a.` mark).
+- `public/brand/`: the `a.` mark (SVG + PNG). `app/icon.svg` is the favicon. The header/footer lockup is the mark plus live text in `components/Logo.tsx`.
 - `lib/site.ts`: site name, URL and contact email. **Update before launch.**
 
 ## Before launch
