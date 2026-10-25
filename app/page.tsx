@@ -327,6 +327,7 @@ export default function Home() {
               </a>
             ))}
             <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={`mailto:${site.supportEmail}`}>Tech support: {site.supportEmail}</a>
           </nav>
         </div>
         <div className="container footer-legal small muted">
