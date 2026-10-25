@@ -112,6 +112,15 @@ const faqs = [
   },
 ];
 
+// Gold square full stop, echoing the logo. Screen readers still get a period.
+function Dot() {
+  return (
+    <span className="dot">
+      <span className="sr-only">.</span>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -122,70 +131,24 @@ export default function Home() {
       <main id="main">
         {/* Hero */}
         <section className="hero" id="top">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <p className="eyebrow">Software modernization for small and mid-sized businesses</p>
-              <h1 className="display">
-                Replace the software that&rsquo;s slowing your business down<span className="dot" aria-hidden />
-              </h1>
-              <p className="lede">
-                We get you off legacy systems and overpriced SaaS, and build custom software and AI tools that
-                fit how your team actually works. You own all of it.
-              </p>
-              <div className="cta-row">
-                <a className="btn btn-primary" href="#contact">
-                  Book a free workflow audit
-                </a>
-                <a className="btn btn-ghost" href="#process">
-                  See how it works
-                </a>
-              </div>
-              <ul className="hero-points">
-                <li>Fixed-price projects</li>
-                <li>You own the code and data</li>
-                <li>No per-seat fees</li>
-              </ul>
-            </div>
-
-            <div className="hero-visual" aria-label="Example: five tools replaced by one custom system">
-              <div className="stack-card">
-                <div className="stack-head">
-                  <span className="label">Today</span>
-                  <span className="data muted">example stack</span>
-                </div>
-                <ul className="stack-list">
-                  <li><span>CRM, 18 seats</span><span className="data">$1,620/mo</span></li>
-                  <li><span>Project tool, Pro tier</span><span className="data">$540/mo</span></li>
-                  <li><span>Forms + e-sign</span><span className="data">$310/mo</span></li>
-                  <li><span>Zapier glue</span><span className="data">$240/mo</span></li>
-                  <li><span>2009 Access database</span><span className="data">1 person</span></li>
-                </ul>
-                <div className="stack-foot">
-                  <span>Manual re-entry</span>
-                  <span className="data strong">14 hrs/wk</span>
-                </div>
-              </div>
-              <div className="arrow" aria-hidden>
-                <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 4v16m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
-              </div>
-              <div className="stack-card stack-new">
-                <div className="stack-head">
-                  <span className="label">After</span>
-                  <span className="data">one system, yours</span>
-                </div>
-                <p className="stack-title">Client hub</p>
-                <div className="chips">
-                  <span>Clients</span>
-                  <span>Projects</span>
-                  <span>Forms</span>
-                  <span>Billing sync</span>
-                  <span>AI intake</span>
-                </div>
-                <div className="stack-foot">
-                  <span>Manual re-entry</span>
-                  <span className="data strong">0 hrs/wk</span>
-                </div>
-              </div>
+          <div className="container hero-inner">
+            <h1 className="display">
+              <span className="nowrap">Custom software<Dot /></span>
+              <span className="hero-accent">
+                <span className="nowrap">Built for you<Dot /></span> <span className="nowrap">Owned by you<Dot /></span>
+              </span>
+            </h1>
+            <p className="lede">
+              Replace legacy systems and the pile of SaaS subscriptions with one tool made for your team. Fixed
+              price, and it&rsquo;s yours to keep.
+            </p>
+            <div className="cta-row">
+              <a className="btn btn-primary" href="#contact">
+                Book a free workflow audit
+              </a>
+              <a className="text-link" href="#process">
+                How it works <span aria-hidden>&rarr;</span>
+              </a>
             </div>
           </div>
         </section>

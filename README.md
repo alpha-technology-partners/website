@@ -22,4 +22,4 @@ npm run build   # production build (fully static)
 
 - Set the real domain and email in `lib/site.ts`.
 - The contact form opens the visitor's email client (no backend). Swap `components/ContactForm.tsx` for a form service or a Route Handler when ready.
-- The hero "example stack" figures and process timelines are illustrative. Check they match how you sell.
+- The process timelines and FAQ figures are illustrative. Check they match how you sell.

@@ -84,7 +84,7 @@ img {
 .display {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(40px, 6.2vw, 72px);
+  font-size: clamp(32px, 11vw, 72px);
   line-height: 1.02;
   letter-spacing: -0.03em;
   text-wrap: balance;
@@ -107,8 +107,7 @@ img {
   letter-spacing: -0.01em;
 }
 
-.label,
-.eyebrow {
+.label {
   font-family: var(--font-sans);
   font-size: 12px;
   line-height: 16px;
@@ -116,19 +115,6 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--navy);
-}
-.eyebrow::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
 }
 
 .lede {
@@ -364,7 +350,7 @@ img {
 
 .hero {
   position: relative;
-  padding: 88px 0 104px;
+  padding: 120px 0 136px;
   overflow: hidden;
 }
 .hero::before {
@@ -375,24 +361,37 @@ img {
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 48px 48px;
-  opacity: 0.5;
-  mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 10%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 10%, transparent 75%);
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 10%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 10%, transparent 75%);
   pointer-events: none;
 }
 
-.hero-grid {
+.hero-inner {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.hero-copy {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 28px;
+  max-width: 1040px;
+  text-align: center;
+}
+.hero-inner .lede {
+  max-width: 32em;
+}
+.hero-inner .cta-row {
+  justify-content: center;
+  align-items: center;
+  gap: 16px 28px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.hero-accent {
+  display: block;
+  color: var(--navy);
 }
 
 .cta-row {
@@ -402,116 +401,12 @@ img {
   margin-top: 8px;
 }
 
-.hero-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-  padding: 0;
-  list-style: none;
-  font-size: 15px;
-  color: var(--muted);
-}
-.hero-points li,
-.ticks li,
-.cta-list li {
-  position: relative;
-  padding-left: 18px;
-}
-.hero-points li::before,
-.ticks li::before,
-.cta-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-}
-
-.hero-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.stack-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 20px 22px;
-  box-shadow: 0 1px 2px rgb(20 27 41 / 0.04), 0 12px 32px -12px rgb(20 27 41 / 0.14);
-}
-
-.stack-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 12px;
-}
-
-.stack-list {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-.stack-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 0;
-  border-top: 1px dashed var(--line);
-  color: var(--muted);
-}
-.stack-list li span:first-child {
-  text-decoration: line-through;
-  text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent);
-}
-
-.stack-foot {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  font-size: 15px;
+.text-link {
   font-weight: 600;
+  text-decoration: none;
 }
-
-.stack-new {
-  background: var(--navy-tint);
-  border-color: color-mix(in srgb, var(--navy) 35%, var(--line));
-}
-.stack-new .stack-head .data {
-  color: var(--navy);
-}
-
-.stack-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.chips span {
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.arrow {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-  color: var(--navy);
+.text-link:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Sections ---------- */
@@ -869,9 +764,8 @@ img {
 
 @media (max-width: 900px) {
   .hero {
-    padding: 56px 0 72px;
+    padding: 72px 0 88px;
   }
-  .hero-grid,
   .faq-grid,
   .cta-grid {
     grid-template-columns: 1fr;
