@@ -11,25 +11,40 @@ const topics = [
   "Not sure yet",
 ];
 
-// No backend yet: the form opens the visitor's email client with the details filled in.
-export function ContactForm() {
-  const [sent, setSent] = useState(false);
+type Status = "idle" | "sending" | "sent" | "error";
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+// Posts to app/api/contact, which emails the details to info@ via Resend.
+export function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const get = (k: string) => String(data.get(k) ?? "").trim();
-    const subject = `Workflow audit: ${get("company") || get("name")}`;
-    const body = [
-      `Name: ${get("name")}`,
-      `Email: ${get("email")}`,
-      `Company: ${get("company")}`,
-      `Main issue: ${get("topic")}`,
-      "",
-      get("message"),
-    ].join("\n");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    const form = e.currentTarget;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Couldn't send right now.");
+      form.reset();
+      setStatus("sent");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Couldn't send right now.");
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="form form-done" role="status">
+        <p className="h3">Thanks, we&rsquo;ve got it<span className="dot" aria-hidden /></p>
+        <p className="muted">We&rsquo;ll reply within one business day to book your audit call.</p>
+      </div>
+    );
   }
 
   return (
@@ -60,11 +75,19 @@ export function ContactForm() {
         <span>Which tools do you use today?</span>
         <textarea name="message" rows={4} placeholder="e.g. HubSpot, Monday, an old Access database, lots of spreadsheets" />
       </label>
-      <button className="btn btn-primary btn-block" type="submit">
-        Request my audit call
+      {/* Honeypot for bots; hidden from people and screen readers. */}
+      <input className="hp" name="website" tabIndex={-1} autoComplete="off" aria-hidden />
+      <button className="btn btn-primary btn-block" type="submit" disabled={status === "sending"}>
+        {status === "sending" ? "Sending…" : "Request my audit call"}
       </button>
       <p className="form-note" role="status">
-        {sent ? `Your email app should open now. If it doesn't, write to ${site.email}.` : "We reply within one business day."}
+        {status === "error" ? (
+          <>
+            {error} Email us at <a href={`mailto:${site.email}`}>{site.email}</a>.
+          </>
+        ) : (
+          "We reply within one business day."
+        )}
       </p>
     </form>
   );

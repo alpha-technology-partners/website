@@ -4,6 +4,7 @@ const domain = "alphatechnologypartners.com";
 export const site = {
   name: "Alpha Technology Partners",
   shortName: "ATP",
+  domain,
   url: `https://${domain}`,
   // Sales and general enquiries, including the contact form.
   email: `info@${domain}`,
