@@ -1,0 +1,67 @@
+/* Alphas Consulting Group — generated from tokens.json */
+@font-face{font-family:'Bricolage Grotesque';src:url('fonts/bricolage-grotesque-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Bricolage Grotesque';src:url('fonts/bricolage-grotesque-latin-700-normal.woff2') format('woff2');font-weight:700;font-display:swap;}
+@font-face{font-family:'Instrument Sans';src:url('fonts/instrument-sans-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap;}
+@font-face{font-family:'Instrument Sans';src:url('fonts/instrument-sans-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap;}
+@font-face{font-family:'Instrument Sans';src:url('fonts/instrument-sans-latin-600-normal.woff2') format('woff2');font-weight:600;font-display:swap;}
+@font-face{font-family:'JetBrains Mono';src:url('fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-display:swap;}
+:root{
+  --paper:#ffffff;
+  --surface:#f3f5f8;
+  --line:#d6dce6;
+  --ink:#141b29;
+  --muted:#556074;
+  --navy:#1d3557;
+  --navy-deep:#13243d;
+  --navy-tint:#e6ecf5;
+  --gold:#e9a23b;
+  --on-navy:#ffffff;
+  --font-display:"Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-email:Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --radius-sm:4px;
+  --radius-md:8px;
+  --radius-lg:18px;
+}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme=light]){
+  --paper:#0e1420;
+  --surface:#161e2c;
+  --line:#283246;
+  --ink:#e8ecf3;
+  --muted:#9ea9bc;
+  --navy:#8fb3e8;
+  --navy-deep:#2a4a78;
+  --navy-tint:#1a2538;
+  --gold:#f0b45a;
+  --on-navy:#0e1420;
+}
+}
+:root[data-theme=dark]{
+  --paper:#0e1420;
+  --surface:#161e2c;
+  --line:#283246;
+  --ink:#e8ecf3;
+  --muted:#9ea9bc;
+  --navy:#8fb3e8;
+  --navy-deep:#2a4a78;
+  --navy-tint:#1a2538;
+  --gold:#f0b45a;
+  --on-navy:#0e1420;
+}
+.t-display-xl{font-family:var(--font-display);font-size:56px;line-height:58px;font-weight:700;letter-spacing:-0.02em;}
+.t-display-l{font-family:var(--font-display);font-size:36px;line-height:40px;font-weight:700;letter-spacing:-0.015em;}
+.t-heading{font-family:var(--font-display);font-size:22px;line-height:28px;font-weight:700;}
+.t-subheading{font-family:var(--font-display);font-size:17px;line-height:24px;font-weight:500;}
+.t-body{font-family:var(--font-sans);font-size:16px;line-height:25px;font-weight:400;}
+.t-body-s{font-family:var(--font-sans);font-size:14px;line-height:21px;font-weight:400;}
+.t-label{font-family:var(--font-sans);font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.14em;}
+.t-data{font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;}
