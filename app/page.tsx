@@ -2,41 +2,140 @@ import { Header } from "@/components/Header";
 import { Logo } from "@/components/Logo";
 import { ContactForm } from "@/components/ContactForm";
 import { HeroSquares } from "@/components/HeroSquares";
+import { HubMockup, StudioMockup } from "@/components/WorkMockups";
 import { nav, site } from "@/lib/site";
 
 const pains = [
   {
-    title: "You're paying for SaaS you've outgrown",
-    body: "Per-seat prices go up every renewal. You use a fraction of the features, and the one you actually need sits on the enterprise tier.",
+    title: "Your subscriptions keep going up",
+    body: "A CRM, a scheduling app, a project tool and a few add-ons. Each one went up in price this year, and none of them share data.",
   },
   {
-    title: "Your core system is a liability",
-    body: "An Access database, an on-prem server, or a vendor that stopped shipping updates. One person knows how it works, and everyone hopes they don't leave.",
+    title: "There's a system nobody wants to touch",
+    body: "Maybe it's an Access database, an old server in the back office, or software the vendor stopped supporting. It works, but only one person really knows how.",
   },
   {
-    title: "Your team is the integration",
-    body: "Client details get copied between the CRM, the billing tool and a spreadsheet by hand. Every copy is a chance to get it wrong.",
+    title: "Someone spends their week re-typing",
+    body: "An order comes in by email, gets keyed into the CRM, then into QuickBooks, then into the spreadsheet for Monday's report.",
   },
 ];
 
 const services = [
   {
-    tag: "Modernize",
-    title: "Move off legacy systems",
-    body: "We rebuild aging desktop apps, databases and on-prem tools as secure web software, and move every record across without losing history.",
-    points: ["Data migration with a verified record count", "Runs in the browser, on any device", "Hosted, backed up and monitored"],
+    tag: "Advise",
+    title: "Figure out what you need",
+    body: "We spend time with your team, look at every tool you pay for, and write up what we'd keep, replace or connect. Sometimes the answer is that you're in good shape.",
+    points: ["A written plan that's yours, whether or not we build it", "Costs for each option, side by side", "Off-the-shelf recommendations too"],
   },
   {
     tag: "Replace",
-    title: "Swap SaaS sprawl for software you own",
-    body: "When a stack of subscriptions is doing one job badly, we replace it with one tool built for how you work, with no per-seat fees.",
-    points: ["Cost that stays flat as you hire", "Your code, your data, your hosting account", "Keeps the SaaS that's genuinely worth paying for"],
+    title: "Get off the old system",
+    body: "We move you from aging software, or a pile of overlapping subscriptions, onto one system your team will actually use. All of your data comes with you.",
+    points: ["Data checked record by record before cutover", "No per-user fees as you hire", "You own the code and the data"],
   },
   {
     tag: "Build",
-    title: "Custom tools and AI automation",
-    body: "Client portals, internal dashboards, quoting tools and AI assistants that read your documents, draft the follow-up and fill in the form.",
-    points: ["Connects to the systems you keep", "AI where it saves hours, not for show", "Your team trained before we hand over"],
+    title: "Custom tools and AI agents",
+    body: "Customer portals, quoting tools, dispatch boards and dashboards, plus AI agents that pick up the repetitive work.",
+    points: ["Works with QuickBooks, your CRM and the tools you keep", "Your team trained before we hand it over", "Support after launch if you want it"],
+  },
+];
+
+// One example flow per target industry: what triggers it, what the agent does, what's left for a person.
+const agents = [
+  {
+    industry: "Field services",
+    title: "Job closed, invoice sent",
+    when: "A tech marks the job done on their phone.",
+    agent: "Builds the invoice from the job sheet, emails it to the customer and records it in QuickBooks.",
+    team: "Reviews anything over a set amount.",
+  },
+  {
+    industry: "Manufacturing",
+    title: "Emailed PO to production order",
+    when: "A customer emails a purchase order as a PDF.",
+    agent: "Reads it, checks stock, creates the order and flags any line it can't match.",
+    team: "Sorts out the flagged lines.",
+  },
+  {
+    industry: "Service businesses",
+    title: "Quote follow-up",
+    when: "A quote has gone five days without a reply.",
+    agent: "Writes a follow-up based on the client's history and sends it, or holds it for approval.",
+    team: "Takes the call when the client replies.",
+  },
+  {
+    industry: "Fitness studios",
+    title: "Monday numbers",
+    when: "Every Monday at 7am.",
+    agent: "Pulls attendance, sales and campaign results from each location into one summary.",
+    team: "Decides what to change this week.",
+  },
+];
+
+const industries = [
+  {
+    name: "Manufacturing",
+    pain: "Orders arrive by email, inventory lives in a spreadsheet, and the shop floor hears about changes last.",
+    builds: "Order and inventory tracking, production scheduling, quoting.",
+  },
+  {
+    name: "Field services",
+    pain: "Jobs get booked over the phone, techs fill out paper sheets, and the invoice goes out a week later.",
+    builds: "Dispatch, mobile job sheets, invoicing from the field.",
+  },
+  {
+    name: "Service businesses",
+    pain: "Client details are in the CRM, hours are in a timesheet app, and billing happens in QuickBooks.",
+    builds: "Client portals, time and project tracking, quote to invoice.",
+  },
+  {
+    name: "Fitness studios",
+    pain: "The booking app runs classes, but staff tasks, marketing and reporting across locations live in spreadsheets.",
+    builds: "Studio operations, campaign planning, multi-location reporting.",
+  },
+];
+
+const work = [
+  {
+    name: "Studio operations hub",
+    Mockup: StudioMockup,
+    sector: "Fitness studio",
+    detail: "Two locations",
+    body: "A boutique studio was running two locations out of Asana. We built them one hub for projects, marketing and staff, and brought their Asana history across.",
+    points: [
+      "Projects and tasks by studio and team",
+      "Campaign calendar with content approvals",
+      "Staff can update their work from ChatGPT or Claude",
+    ],
+  },
+  {
+    name: "Alpha Hub",
+    Mockup: HubMockup,
+    sector: "Professional services",
+    detail: "Our own business",
+    body: "We built our own system to run ATP, from the first call to the paid invoice. It's the same approach we take with clients.",
+    points: [
+      "Lead tracking, with AI-drafted research before every call",
+      "Quotes clients accept online, which turn into projects",
+      "Invoices built from completed work, with automatic reminders",
+    ],
+  },
+];
+
+// Matthew's title and bio are placeholders: replace the bracketed text before launch.
+const team = [
+  {
+    name: "Brandon Saltzman",
+    role: "Co-founder & CEO",
+    photo: "/team/brandon-saltzman.jpg",
+    bio: "Brandon has helped 100+ small and mid-sized businesses in logistics, manufacturing, field service and e-commerce run more efficiently with custom software, starting at Method CRM before it went mainstream. There, Brandon built AI tooling that made internal teams measurably more efficient. Brandon has also worked with boutique fitness studios, from revenue operations to the systems they run on.",
+  },
+  {
+    name: "Matthew Green",
+    role: "Co-founder & [Title]",
+    photo: null,
+    bio: "[2–3 sentences: Matthew's background and what he leads for clients.]",
   },
 ];
 
@@ -45,38 +144,38 @@ const steps = [
     n: "01",
     title: "Audit",
     time: "2 weeks",
-    body: "We sit with your team, map every tool and hand-off, and price out what each one costs you in fees and hours.",
-    out: "A written report: what to replace, what to keep, what to fix first.",
+    body: "We meet your team, see how work moves through the business, and list every tool and what it costs.",
+    out: "A written report with what we'd change, and in what order.",
   },
   {
     n: "02",
     title: "Plan",
     time: "1 week",
-    body: "We scope the first build down to the screens and data, so you know exactly what you're getting.",
-    out: "A fixed-price proposal with a timeline. No hourly surprises.",
+    body: "We agree on exactly what the first version includes, screen by screen.",
+    out: "A fixed price and a timeline.",
   },
   {
     n: "03",
     title: "Build",
     time: "6–12 weeks",
-    body: "We ship working software every two weeks. Your team uses it early, and we adjust while changes are cheap.",
-    out: "A demo every sprint and a live staging site you can click through.",
+    body: "We release working pieces every two weeks so your team can try them and tell us what's off.",
+    out: "A demo every two weeks and a test version to try.",
   },
   {
     n: "04",
     title: "Switch over",
     time: "1–2 weeks",
-    body: "We migrate your data, run old and new side by side, train your team, then turn the old system off.",
-    out: "The code, docs and admin access. Optional support after launch.",
+    body: "We move your data, run the old and new systems side by side for a short while, and train everyone.",
+    out: "The code, the documentation and admin access.",
   },
 ];
 
 const compare = [
-  { row: "Cost as you grow", saas: "Rises with every seat and tier", custom: "Flat. Add people for free" },
-  { row: "Fit with your process", saas: "You change how you work to fit it", custom: "Built around how you already work" },
-  { row: "Your data", saas: "In their database, export if allowed", custom: "In your database, on your account" },
-  { row: "Connecting tools", saas: "Zapier chains and manual copy-paste", custom: "One system, or direct integrations" },
-  { row: "Leaving", saas: "Price hikes and lock-in", custom: "You own the code. Nothing to leave" },
+  { row: "Cost as you grow", saas: "Goes up with every user and tier", custom: "Stays the same as you add people" },
+  { row: "Fit with your process", saas: "You adjust how you work to suit it", custom: "Built around how you already work" },
+  { row: "Your data", saas: "Stored in their system", custom: "Stored in your account" },
+  { row: "Connecting tools", saas: "Zapier chains and copy-paste", custom: "One system, or direct connections" },
+  { row: "Leaving", saas: "Contracts and export limits", custom: "You own the code, so nothing to cancel" },
 ];
 
 const proof = [
@@ -88,28 +187,28 @@ const proof = [
 
 const faqs = [
   {
+    q: "Who do you work with?",
+    a: "Mostly small and mid-sized businesses in Canada and the US. We've done the most work in manufacturing, field services, service businesses and fitness studios, but the problem matters more to us than the industry.",
+  },
+  {
+    q: "Will you tell us if we don't need custom software?",
+    a: "Yes. Plenty of audits end with us recommending a better setup of tools you already have. You'll know before you spend anything on a build.",
+  },
+  {
     q: "Isn't custom software more expensive than SaaS?",
-    a: "Upfront, yes. Over three to five years it's often cheaper, because there are no per-seat fees and no paying for features you don't use. The audit puts real numbers on this for your business before you commit to anything, and sometimes the answer is to keep the SaaS.",
+    a: "It costs more upfront. Over three to five years it often costs less, because you're not paying per user or for features nobody uses. We'll run the numbers for your business during the audit.",
   },
   {
     q: "What happens to our existing data?",
-    a: "We move all of it. We map every field from the old system, run test migrations, and check record counts and totals with you before the switch. Old and new run side by side until you're confident.",
+    a: "All of it comes with you. We do test runs first, check the totals with you, and keep your old system running until you're comfortable switching.",
   },
   {
     q: "Do we need developers on staff?",
-    a: "No. We build, host and look after the software, and train your team to run the admin side. If you hire developers later, they get clean, documented code in a standard stack.",
-  },
-  {
-    q: "How long does a project take?",
-    a: "Most first builds go live in 2–4 months, including the audit. You see working software within the first few weeks, not at the end.",
-  },
-  {
-    q: "Where does AI fit in?",
-    a: "Where it saves real hours: reading inbound documents, drafting replies, summarising calls, filling in forms. We point it at specific, repetitive tasks and keep a person in the loop for anything that matters.",
+    a: "No. We host and maintain everything and show your team how to manage the day-to-day settings. If you hire developers later, the code is documented and uses common tools.",
   },
   {
     q: "What if we only need one small tool?",
-    a: "That's a good place to start. Plenty of engagements begin with a single portal or automation, then grow once the first one pays for itself.",
+    a: "That's a good place to start. A lot of our work begins with one tool and grows once it's earned its keep.",
   },
 ];
 
@@ -135,21 +234,21 @@ export default function Home() {
           <HeroSquares />
           <div className="container hero-inner">
             <h1 className="display">
-              <span className="nowrap">Custom software<Dot /></span>
+              <span className="nowrap">Software that fits<Dot /></span>
               <span className="hero-accent">
                 <span className="nowrap">Built for you<Dot /></span> <span className="nowrap">Owned by you<Dot /></span>
               </span>
             </h1>
             <p className="lede">
-              Replace legacy systems and the pile of SaaS subscriptions with one tool made for your team. Fixed
-              price, and it&rsquo;s yours to keep.
+              We help small and mid-sized businesses across North America understand their options, then build the
+              tools that fit how they actually work.
             </p>
             <div className="cta-row">
               <a className="btn btn-primary" href="#contact">
                 Book a free workflow audit
               </a>
-              <a className="text-link" href="#process">
-                How it works <span aria-hidden>&rarr;</span>
+              <a className="text-link" href="#work">
+                See what we&rsquo;ve built <span aria-hidden>&rarr;</span>
               </a>
             </div>
           </div>
@@ -160,7 +259,7 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <p className="label">The problem</p>
-              <h2 className="h2">Most businesses don&rsquo;t have a software problem. They have five.</h2>
+              <h2 className="h2">Where we usually come in</h2>
             </div>
             <div className="grid-3">
               {pains.map((p) => (
@@ -178,9 +277,10 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <p className="label">What we do</p>
-              <h2 className="h2">Three ways we fix it</h2>
+              <h2 className="h2">Advice first, then the build</h2>
               <p className="lede-s">
-                Every engagement is one of these, or a mix. We start with what costs you the most.
+                Every project starts with a conversation about how your business runs today. From there, it&rsquo;s
+                usually some mix of these three.
               </p>
             </div>
             <div className="grid-3">
@@ -200,15 +300,153 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Agentic workflows */}
+        <section className="section" id="agents">
+          <div className="container">
+            <div className="section-head">
+              <p className="label">AI agents</p>
+              <h2 className="h2">Grow the business without growing the admin team</h2>
+              <p className="lede-s">
+                A lot of what fills your team&rsquo;s day follows the same steps every time. An AI agent can take
+                those steps for them, so your people spend their time on customers and sales instead of paperwork.
+                Here&rsquo;s what that looks like in practice.
+              </p>
+            </div>
+            <div className="grid-2">
+              {agents.map((a) => (
+                <article className="card card-service" key={a.title}>
+                  <span className="tag">{a.industry}</span>
+                  <h3 className="h3">{a.title}</h3>
+                  <dl className="flow">
+                    <div>
+                      <dt className="label">When</dt>
+                      <dd>{a.when}</dd>
+                    </div>
+                    <div>
+                      <dt className="label">The agent</dt>
+                      <dd>{a.agent}</dd>
+                    </div>
+                    <div>
+                      <dt className="label">Your team</dt>
+                      <dd>{a.team}</dd>
+                    </div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+            <p className="muted more-note">
+              We run agents like these in our own business: ours draft the research on every lead before a sales
+              call and send late-invoice reminders automatically. You decide what an agent can do by itself, and anything involving money
+              or a customer can wait for someone on your team to approve it.
+            </p>
+          </div>
+        </section>
+
+        {/* Industries */}
+        <section className="section section-surface" id="industries">
+          <div className="container">
+            <div className="section-head">
+              <p className="label">Industries</p>
+              <h2 className="h2">Who we work with</h2>
+              <p className="lede-s">
+                Small and mid-sized businesses across Canada and the US. These are the four industries where
+                we&rsquo;ve done the most work.
+              </p>
+            </div>
+            <div className="grid-4">
+              {industries.map((i) => (
+                <article className="card" key={i.name}>
+                  <h3 className="h3">{i.name}</h3>
+                  <p className="muted">{i.pain}</p>
+                  <p className="industry-builds">
+                    <span className="label">What we build</span>
+                    {i.builds}
+                  </p>
+                </article>
+              ))}
+            </div>
+            <p className="muted more-note">
+              In a different industry? If your team spends hours working around its software, it&rsquo;s worth a
+              call.
+            </p>
+          </div>
+        </section>
+
+        {/* Our work */}
+        <section className="section" id="work">
+          <div className="container">
+            <div className="section-head">
+              <p className="label">Our work</p>
+              <h2 className="h2">In use every day</h2>
+              <p className="lede-s">
+                One system we built for a client, and one we run our own company on.
+              </p>
+            </div>
+            <div className="work-list">
+              {work.map(({ Mockup, ...w }) => (
+                <article className="work-item" key={w.name}>
+                  <Mockup />
+                  <div className="work-copy">
+                    <div className="build-meta">
+                      <span className="tag">{w.sector}</span>
+                      <span className="tag tag-quiet">{w.detail}</span>
+                    </div>
+                    <h3 className="h3">{w.name}</h3>
+                    <p className="muted">{w.body}</p>
+                    <ul className="ticks">
+                      {w.points.map((pt) => (
+                        <li key={pt}>{pt}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className="muted more-note small">Screens are illustrative. Client names and figures are changed.</p>
+          </div>
+        </section>
+
+        {/* About */}
+        <section className="section section-surface" id="about">
+          <div className="container">
+            <div className="section-head">
+              <p className="label">About us</p>
+              <h2 className="h2">You work with the people who build it</h2>
+              <p className="lede-s">
+                No account managers or hand-offs. The founders run your audit, plan your build and stay with you
+                after launch.
+              </p>
+            </div>
+            <div className="grid-2">
+              {team.map((t) => (
+                <article className="card team-card" key={t.name}>
+                  {t.photo ? (
+                    <img className="team-photo" src={t.photo} alt={t.name} />
+                  ) : (
+                    <div className="team-photo team-photo-empty" aria-hidden>
+                      {t.name.split(" ").map((w) => w[0]).join("")}
+                    </div>
+                  )}
+                  <div className="team-body">
+                    <h3 className="h3">{t.name}</h3>
+                    <p className="label">{t.role}</p>
+                    <p className="muted">{t.bio}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section className="section" id="process">
           <div className="container">
             <div className="section-head">
               <p className="label">How it works</p>
-              <h2 className="h2">From audit to switch-over in four steps</h2>
+              <h2 className="h2">How a project runs</h2>
               <p className="lede-s">
-                Most first projects are live in <span className="data-inline">2–4 months</span>. You see working
-                software within weeks, not at the end.
+                Most first projects take <span className="data-inline">2–4 months</span> from the first meeting to
+                launch. You&rsquo;ll be using parts of it within the first few weeks.
               </p>
             </div>
             <ol className="steps">
@@ -235,10 +473,10 @@ export default function Home() {
           <div className="container">
             <div className="section-head">
               <p className="label">SaaS vs custom</p>
-              <h2 className="h2">Renting software made sense. Until it didn&rsquo;t.</h2>
+              <h2 className="h2">Off-the-shelf or custom?</h2>
               <p className="lede-s">
-                Off-the-shelf tools are great for getting started. Past a certain size, you&rsquo;re paying more
-                every year for something that fits you less.
+                Off-the-shelf software is the right call for a lot of businesses, especially early on. It gets
+                harder to justify once you&rsquo;re paying for dozens of seats and still working around it.
               </p>
             </div>
             <div className="table-wrap">
@@ -298,15 +536,15 @@ export default function Home() {
           <div className="container cta-grid">
             <div>
               <p className="label on-dark">Free workflow audit call</p>
-              <h2 className="h2 on-dark">Find out what you could replace, and what it would save.</h2>
+              <h2 className="h2 on-dark">Book a free 30-minute call</h2>
               <p className="on-dark-muted">
-                A 30-minute call. Tell us which tools you pay for and where your team loses time. We&rsquo;ll tell
-                you honestly whether custom software makes sense, and where we&rsquo;d start.
+                Tell us what tools you&rsquo;re paying for and where your team loses time. We&rsquo;ll tell you what
+                we&rsquo;d do about it, even if that&rsquo;s nothing.
               </p>
               <ul className="cta-list">
-                <li>No sales deck</li>
-                <li>No obligation</li>
-                <li>A straight answer, even if it&rsquo;s &ldquo;keep what you have&rdquo;</li>
+                <li>No pitch deck</li>
+                <li>No commitment</li>
+                <li>Advice you can use whether or not you hire us</li>
               </ul>
             </div>
             <ContactForm />
