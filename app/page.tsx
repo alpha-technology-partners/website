@@ -135,8 +135,7 @@ const team = [
     role: "Co-founder & CTO",
     photo: "/team/matthew-green.jpg",
     bio: [
-      "Matthew is an AI engineer at General Motors and the founder of Chasqui, where he builds AI-powered products and intelligent agents. His experience spans AI engineering, software development, system integration, and building solutions that solve real business problems.",
-      "At Alpha Technology Partners, Matthew leads technology strategy and development, overseeing everything from system architecture and custom software to AI integrations and intelligent automation. He focuses on building practical, scalable solutions that help businesses work smarter, reduce manual processes, and get more out of their technology.",
+      "Matthew is an AI engineer at General Motors and the founder of Chasqui, where he builds AI-powered products and intelligent agents. At Alpha Technology Partners, Matthew leads technology strategy and development, from system architecture and custom software to AI integrations and automation. He focuses on practical, scalable solutions that help businesses cut manual work and get more out of their technology.",
     ],
   },
 ];
