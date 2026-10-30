@@ -123,7 +123,6 @@ const work = [
   },
 ];
 
-// Matthew's title and bio are placeholders: replace the bracketed text before launch.
 const team = [
   {
     name: "Brandon Saltzman",
@@ -133,9 +132,9 @@ const team = [
   },
   {
     name: "Matthew Green",
-    role: "Co-founder & [Title]",
-    photo: null,
-    bio: "[2–3 sentences: Matthew's background and what he leads for clients.]",
+    role: "Co-founder & CTO",
+    photo: "/team/matthew-green.jpg",
+    bio: "Matthew is an AI engineer at General Motors and the founder of Chasqui, which builds AI agents that handle customer conversations over WhatsApp, Telegram and web chat. At ATP, Matthew leads the technical side: how each system is designed, the build itself, and the AI agents that take repetitive work off your team.",
   },
 ];
 
