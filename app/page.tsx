@@ -128,13 +128,16 @@ const team = [
     name: "Brandon Saltzman",
     role: "Co-founder & CEO",
     photo: "/team/brandon-saltzman.jpg",
-    bio: "Brandon has helped 100+ small and mid-sized businesses in logistics, manufacturing, field service and e-commerce run more efficiently with custom software, starting at Method CRM before it went mainstream. There, Brandon built AI tooling that made internal teams measurably more efficient. Brandon has also worked with boutique fitness studios, from revenue operations to the systems they run on.",
+    bio: ["Brandon has helped 100+ small and mid-sized businesses in logistics, manufacturing, field service and e-commerce run more efficiently with custom software, starting at Method CRM before it went mainstream. There, Brandon built AI tooling that made internal teams measurably more efficient. Brandon has also worked with boutique fitness studios, from revenue operations to the systems they run on."],
   },
   {
     name: "Matthew Green",
     role: "Co-founder & CTO",
     photo: "/team/matthew-green.jpg",
-    bio: "Matthew is an AI engineer at General Motors and the founder of Chasqui, which builds AI agents that handle customer conversations over WhatsApp, Telegram and web chat. At ATP, Matthew leads the technical side: how each system is designed, the build itself, and the AI agents that take repetitive work off your team.",
+    bio: [
+      "Matthew is an AI engineer at General Motors and the founder of Chasqui, where he builds AI-powered products and intelligent agents. His experience spans AI engineering, software development, system integration, and building solutions that solve real business problems.",
+      "At Alpha Technology Partners, Matthew leads technology strategy and development, overseeing everything from system architecture and custom software to AI integrations and intelligent automation. He focuses on building practical, scalable solutions that help businesses work smarter, reduce manual processes, and get more out of their technology.",
+    ],
   },
 ];
 
@@ -429,7 +432,11 @@ export default function Home() {
                   <div className="team-body">
                     <h3 className="h3">{t.name}</h3>
                     <p className="label">{t.role}</p>
-                    <p className="muted">{t.bio}</p>
+                    {t.bio.map((para) => (
+                      <p className="muted" key={para.slice(0, 24)}>
+                        {para}
+                      </p>
+                    ))}
                   </div>
                 </article>
               ))}
